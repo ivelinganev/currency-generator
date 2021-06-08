@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Post</name>
+        <label>Post</label>
+        <locationX>151</locationX>
+        <locationY>858</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>PostChatterMessagePlainText</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>groupId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>51.0</apiVersion>
+    <interviewLabel>ChatterGroupPlusPost {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ChatterGroupPlusPost v1.0</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>ChatterGroup</name>
+        <label>ChatterGroup</label>
+        <locationX>151</locationX>
+        <locationY>506</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Post</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Trade reviewers</stringValue>
+            </value>
+        </filters>
+        <object>CollaborationGroup</object>
+        <outputAssignments>
+            <assignToReference>groupId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>123</locationY>
+        <connector>
+            <targetReference>ChatterGroup</targetReference>
+        </connector>
+        <object>Trade__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>PostChatterMessagePlainText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Sell Currency: {!$Record.Sell_Currency__c}
+Sell Amount: {!$Record.Sell_Amount__c}
+Buy Currency: {!$Record.Buy_Currency__c}
+Buy Amount: {!$Record.Buy_Amount__c}
+Rate: {!$Record.Rate__c}
+Booked Date: {!$Record.CreatedDate}
+Link: {!$Record.URL__c}</text>
+    </textTemplates>
+    <variables>
+        <name>groupId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

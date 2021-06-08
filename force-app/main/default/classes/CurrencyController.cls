@@ -45,7 +45,8 @@ public with sharing class CurrencyController {
 			newTrade.Rate__c = double.valueOf( rate );
 
 			insert newTrade;
-		} catch( Exception e ) {
+		} catch( Exception e ) {	
+			System.debug('e: ' + e);
 			throw new AuraHandledException( e.getMessage() );
 		}
 	}

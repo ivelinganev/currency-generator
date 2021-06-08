@@ -102,6 +102,11 @@ export default class CreateTradeModal extends LightningElement {
 
   handleCloseModal() {
     this.dispatchEvent(new CustomEvent("closemodal"));
+    this.buyComboValue = undefined;
+    this.buyInputValue = undefined;
+    this.sellComboValue = undefined;
+    this.sellInputValue = undefined;
+    this.fetchedCurrencyRate = undefined;
     this.isLoading = false;
   }
 

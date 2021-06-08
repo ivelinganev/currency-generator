@@ -5,17 +5,43 @@
 		<name>ApexClass</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ChatterExtension</name>
+	</types>
+	<types>
 		<members>Existing_Exchange_Trades</members>
 		<members>New_Trade</members>
 		<name>CustomLabel</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>CustomLabels</name>
+	</types>
+	<types>
+		<members>CollaborationGroup</members>
+		<members>CollaborationGroupMember</members>
 		<members>Trade__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
 		<members>*</members>
+		<name>CustomObjectTranslation</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>Flow</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Group</name>
 	</types>
 	<types>
 		<members>*</members>
@@ -29,6 +55,10 @@
 	<types>
 		<members>*</members>
 		<name>StaticResource</name>
+	</types>
+	<types>
+		<members>Trade__c</members>
+		<name>TopicsForObjects</name>
 	</types>
 	<version>51.0</version>
 </Package>
