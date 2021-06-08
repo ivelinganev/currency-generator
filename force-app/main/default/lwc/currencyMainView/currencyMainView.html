@@ -1,0 +1,33 @@
+<template>
+  <lightning-card title='{labels.tableTitle}'>
+    <lightning-button
+      type=brand
+      label={labels.newTrade}
+      slot="actions"
+      onclick={handleCreateTrade}>
+    </lightning-button>
+
+    <div style='height: 255px;'>
+      <lightning-datatable
+        key-field='id'
+        data={data}
+        columns={columns}
+        hide-checkbox-column>
+      </lightning-datatable>
+
+      <template if:true={isLoading}>
+        <lightning-spinner
+          alternative-text='Loading the trades..'
+          size='medium'>
+        </lightning-spinner>
+      </template>
+
+    </div>
+  </lightning-card>
+
+  <c-create-trade-modal
+    open-modal={showCreateTradeModal}
+    onclosemodal={hancleCloseModal}
+  >
+  </c-create-trade-modal>
+</template>

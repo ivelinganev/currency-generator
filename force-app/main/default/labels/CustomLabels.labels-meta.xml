@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Existing_Exchange_Trades</fullName>
+        <categories>Currency Registrator App</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Existing Exchange Trades</shortDescription>
+        <value>Existing Exchange Trades</value>
+    </labels>
+    <labels>
+        <fullName>New_Trade</fullName>
+        <categories>Currency Registrator App</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade</shortDescription>
+        <value>New Trade</value>
+    </labels>
+</CustomLabels>

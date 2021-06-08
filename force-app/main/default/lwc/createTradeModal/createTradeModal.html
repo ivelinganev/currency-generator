@@ -1,0 +1,99 @@
+<template>
+  <div class="slds-theme_default">
+    <template if:true={isModalOpen}>
+        <div style="height: 640px;">
+          <section
+            role="dialog"
+            tabindex="-1"
+            aria-labelledby="modal-heading-01"
+            aria-modal="true"
+            aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container cst-div-wrapper">
+
+              <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium slds-hyphenate">New Trade</h2>
+              </header>
+
+              <div class="slds-modal__content slds-p-around_medium">
+                <lightning-layout horizontal-align="space">
+
+                  <!-- SELL SIDE-->
+                  <lightning-layout-item padding="around-small">
+                    <div class="cst-combobox-sell">
+                      <lightning-combobox
+                        name="sell"
+                        label="Sell Currency"
+                        value={sellComboValue}
+                        placeholder=""
+                        options={sellCurrencyOption}
+                        onchange={handleSellComboboxChange}>
+                      </lightning-combobox>
+                    </div>
+                    <div class="cst-input-sell">
+                      <lightning-input
+                        type="number"
+                        name="sellInput"
+                        label="Sell Amount"
+                        value={sellInputValue}
+                        onchange={handleSellInputChange}
+                        step="0.01">
+                      </lightning-input>
+                    </div>
+                  </lightning-layout-item>
+
+                        <!-- MIDDLE SIDE-->
+                        <lightning-layout-item padding="around-small">
+                          <div class="custom-box">
+                            <label class="slds-form-element__label slds-align_absolute-center">Rate</label>
+                            <p class="slds-p-top_xx-small">
+                              <lightning-formatted-number value={fetchedCurrencyRate} format-style="decimal" minimum-significant-digits="5"></lightning-formatted-number>
+                            </p>
+                          </div>
+                        </lightning-layout-item>
+
+                        <!-- BUY SIDE-->
+                        <lightning-layout-item padding="around-small">
+                          <div class="cst-combobox-buy">
+                            <lightning-combobox
+                              name="buy"
+                              label="Buy Currency"
+                              value={buyComboValue}
+                              placeholder=""
+                              options={buyCurrencyOption}
+                              onchange={handleBuyComboboxChange}>
+                            </lightning-combobox>
+                          </div>
+                          <div class="cst-input-buy">
+                            <lightning-input
+                              type="number"
+                              name="buyInput"
+                              label="Buy Amount"
+                              value={buyInputValue}
+                              required
+                              step="0.01"
+                              disabled>
+                            </lightning-input>
+                          </div>
+                        </lightning-layout-item>
+
+                      </lightning-layout>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cancel" onclick={handleCloseModal}></lightning-button>
+                        <lightning-button class="slds-m-left_x-small" label="Create" variant="brand" onclick={handleCreateTrade}></lightning-button>
+                    </footer>
+                </div>
+                <template if:true={isLoading}>
+                  <lightning-spinner
+                          alternative-text="Loading the data.."
+                          size="medium">
+                  </lightning-spinner>
+                </template>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+  </div>
+</template>
