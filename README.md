@@ -1,3 +1,16 @@
+Hello, hope to discuss the code. Trying to put some comments but not too offensive.
+I have no expirience with CI/CD. I really hope that code to run without any problems.
+
+1. **Create scratch org**
+	- sfdx force:org:create -s -f config/project-scratch-def.json -a tradesRegistrator
+2. **Deploy and run unit tests **
+  - sfdx force:source:deploy -x manifest/package.xml -u /createdOrgUserName/ -l RunSpecifiedTests -r CurrencyController_Test
+4. **App Builder** 
+  - Currency Registrator App have to be Activates!
+
+Best Regards,
+Ivo
+
 # Salesforce DX Project: Next Steps
 
 Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
