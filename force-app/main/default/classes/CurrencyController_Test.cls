@@ -1,14 +1,26 @@
 @IsTest
 private class CurrencyController_Test {
 
+	@testSetup
+	private static void setupTestdata() {
+		Trade__c trd = new Trade__c();
+		trd.Sell_Currency__c = 'GBP';
+		trd.Sell_Amount__c = 256;
+		trd.Buy_Currency__c = 'EUR';
+		trd.Buy_Amount__c = 198;
+		trd.Rate__c = 1.10;
+
+		insert trd;
+	}
+
 	@IsTest
 	public static void getExistingTrades_Test() {
 		List<Trade__c> tradesList = CurrencyController.getExistingTrades();
 
-		System.assertEquals( 0, tradesList.size() );
+		System.assertEquals( 1, tradesList.size() );
 	}
 
-	@IsTest(SeeAllData=true)
+	@IsTest
 	public static void createTrade_Test() {
 		Test.startTest();
 		CurrencyController.createTrade( 'EUR', '115', 'BGN', '223', '1.95583' );
@@ -51,5 +63,7 @@ private class CurrencyController_Test {
 		responseModel = CurrencyController.calculate( 'GBP', 'JPY', '25' );
 
 		Test.stopTest();
+		
+		System.assertNotEquals( responseModel, NULL );
 	}
 }
